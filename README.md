@@ -1,4 +1,4 @@
-# Sending Email in PowerShell
+# Using SMTP in PowerShell
 
 Dominik Deák
 
@@ -41,7 +41,7 @@ Before using the demo code, the following tools and libraries are required. You 
 
 ## 3 Supporting Resources
 
-* [Sending Email in PowerShell](https://deaksoftware.com.au/articles/sending_email_in_powershell/) - Main article
+* [Using SMTP in PowerShell](https://deaksoftware.com.au/articles/using_smtp_in_powershell/) - Main article
 
 
 ## 4 Legal and Copyright

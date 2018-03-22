@@ -1,5 +1,5 @@
 <#---------------------------------------------------------------------------
-   Sending Email in PowerShell
+   Using SMTP in PowerShell
 
    Dominik Deak <deak.software@gmail.com>, DEAK Software
 
@@ -21,8 +21,8 @@
 
    Supporting Resources:
 
-   * Article: <https://deaksoftware.com.au/articles/sending_email_in_powershell/>
-   * GitHub: <https://github.com/DEAKSoftware/Sending-Email-in-PowerShell/>
+   * Article: <https://deaksoftware.com.au/articles/using_smtp_in_powershell/>
+   * GitHub: <https://github.com/DEAKSoftware/Using-SMTP-in-PowerShell/>
 
    Legal and Copyright:
 
@@ -47,7 +47,7 @@
    DEALINGS IN THE SOFTWARE.
   ---------------------------------------------------------------------------#>
 
-Write-Host "Sending Email in PowerShell - Dominik Deak <deak.software@gmail.com>, DEAK Software" -ForegroundColor Yellow
+Write-Host "Using SMTP in PowerShell - Dominik Deak <deak.software@gmail.com>, DEAK Software" -ForegroundColor Yellow
 
 <#---------------------------------------------------------------------------
    Configuration data.
