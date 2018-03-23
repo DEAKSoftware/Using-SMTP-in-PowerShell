@@ -84,7 +84,7 @@ function makeSMTPClient
 
    $smtpClient.credentials = New-Object System.Net.NetworkCredential( $username, $password )
 
-   return $smtpClient;
+   return $smtpClient
    }
 
 <#---------------------------------------------------------------------------
