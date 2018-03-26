@@ -147,6 +147,53 @@ function makeMessage
 <#---------------------------------------------------------------------------
    Run the demo.
   ---------------------------------------------------------------------------#>
+
+# Use Send-MailMessage command to send an email
+Write-Host "Sending message 1..."
+
+$messageSubject = "Test Subject 1"
+$messageBody = "This is a test message 1."
+
+$tempPassword = ConvertTo-SecureString -String $outgoingPassword -AsPlainText -Force
+$credential = New-Object -TypeName "System.Management.Automation.PSCredential" `
+   -ArgumentList $outgoingUsername, $tempPassword
+
+Remove-Variable -Name tempPassword
+
+$parameters = @{
+   "From" = $outgoingFromAddress;
+   "Subject" = $messageSubject;
+   "Body" = $messageBody;
+   "SmtpServer" = $outgoingServer;
+   "Port" = $outgoingPortSMTP;
+   "UseSsl" = $outgoingEnableSSL;
+   "Credential" = $credential
+   }
+
+if ( $outgoingToAddressList )
+   {
+   $parameters.add( "To", $outgoingToAddressList )
+   }
+
+if ( $outgoingCCAddressList )
+   {
+   $parameters.add( "CC", $outgoingCCAddressList )
+   }
+
+if ( $outgoingBCCAddressList )
+   {
+   $parameters.add( "BCC", $outgoingBCCAddressList )
+   }
+
+if ( $outgoingAttachmentURLList )
+   {
+   $parameters.add( "Attachments", $outgoingAttachmentURLList )
+   }
+
+Send-MailMessage @parameters
+
+
+# Use .NET Frameworks to send emails
 Write-Host "Connecting to SMTP server: $outgoingServer`:$outgoingPortSMTP"
 
 $smtpClient = makeSMTPClient `
@@ -159,18 +206,18 @@ $outgoingMessage = makeMessage `
    $outgoingFromAddress $outgoingReplyToAddressList `
    $outgoingToAddressList $outgoingCCAddressList `
    $outgoingBCCAddressList $outgoingAttachmentURLList `
-   "Test Subject 1" "This is test message 1." $false
+   "Test Subject 2" "This is test message 2." $false
 
 try {
-   Write-Host "Sending message 1..."
+   Write-Host "Sending message 2..."
 
    $smtpClient.send( $outgoingMessage )
 
-   Write-Host "Sending message 2..."
+   Write-Host "Sending message 3..."
 
    $smtpClient.send(
       $outgoingFromAddress, $outgoingToAddressList[0],
-      "Test Subject 2", "This is test message 2." )
+      "Test Subject 3", "This is test message 3." )
    }
 
 catch { Write-Error "Caught SMTP client exception:`n`t$PSItem" }
